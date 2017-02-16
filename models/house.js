@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
   var HouseSchema = new Schema({
     city: String,
     price: Number,
-    NumRooms: Number,
+    numRooms: Number,
     url: String
   });
 
