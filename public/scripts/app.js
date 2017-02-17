@@ -8,46 +8,6 @@ $(document).ready(function() {
     success: renderMultipleListings
   });
 
-var houseList =[];
-houseList.push({
-  name: "Beautiful House",
-  price: "500,000",
-  numRooms: 4,
-  url: "www.craigslist.com"
-});
-houseList.push({
-  name: "Ugly house",
-  price: "90,000",
-  numRooms: 4,
-  url: "www.craigslist.com"
-});
-houseList.push({
-  name: "another house",
-  price: "80,500",
-  numRooms: 4,
-  url: "www.craigslist.com"
-});
-houseList.push({
-  name: "house again",
-  price: "220,000",
-  numRooms: 4,
-  url: "www.craigslist.com"
-});
-console.log(houseList)
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/listings',
-//     success: renderListings
-//   });
-// })
-var sampleListing= [];
-sampleListing.push({
-	name: "Beaut House",
-  price: "50",
-  numRooms: 1,
-  url: "www.craigslist.com"
-})
-console.log(sampleListing)
 
 
 $('.new-listing').on('submit', function(e){
