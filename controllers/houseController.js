@@ -1,4 +1,5 @@
 
+
 /************
  * DATABASE *
  ************/
@@ -13,16 +14,17 @@ function index(req, res) {
   });
 }
 
+// POST /api/albums
+function create(req, res) {
+  // create an album based on request body and send it back as JSON
+  console.log('body', req.body);
 
-// function show(req, res) {
-//   // find one album by id and send it back as JSON
-//   db.Album.findById(req.params.albumId, function(err, foundAlbum) {
-//     if(err) { console.log('albumsController.show error', err); }
-//     console.log('albumsController.show responding with', foundAlbum);
-//     res.json(foundAlbum);
-//   });
-// }
-
+  db.House.create(req.body, function(err, house) {
+    if (err) { console.log('error', err); }
+    console.log(house);
+    res.json(house);
+  });
+}
 
 //
 // // GET /api/albums/:albumId
@@ -63,5 +65,7 @@ function index(req, res) {
 //
 
 module.exports = {
-  index: index
+  index: index,
+  create: create
+
 };
