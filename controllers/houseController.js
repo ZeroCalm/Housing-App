@@ -18,7 +18,7 @@ function index(req, res) {
 function show(req, res) {
   // find one house by id and send it back as JSON
   db.House.findById(req.params.houseId, function(err, foundHouse) {
-    if(err) { console.log('houseController.show error', err); }
+    if (err) { console.log('houseController.show error', err); }
     console.log('houseController.show responding with', foundHouse);
     res.json(foundHouse);
   });
