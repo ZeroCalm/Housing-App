@@ -3,31 +3,27 @@
  * DATABASE *
  ************/
 //
-// var db = require('../models');
-//
-// // GET /api/albums
-// function index(req, res) {
-//   // send back all albums as JSON
-//   db.House.find({}, function(err, allHouses) {
-//     res.json(allHouses);
-//   });
-// }
+var db = require('../models');
 
-// // POST /api/albums
-// function create(req, res) {
-//   // create an album based on request body and send it back as JSON
-//   console.log('body', req.body);
-//
-//   // split at comma and remove and trailing space
-//   var genres = req.body.genres.split(',').map(function(item) { return item.trim(); } );
-//   req.body.genres = genres;
-//
-//   db.Album.create(req.body, function(err, album) {
-//     if (err) { console.log('error', err); }
-//     console.log(album);
-//     res.json(album);
-//   });
-// }
+// GET /api/albums
+function index(req, res) {
+  // send back all albums as JSON
+  db.House.find({}, function(err, allHouses) {
+    res.json(allHouses);
+  });
+}
+
+
+function show(req, res) {
+  // find one album by id and send it back as JSON
+  db.Album.findById(req.params.albumId, function(err, foundAlbum) {
+    if(err) { console.log('albumsController.show error', err); }
+    console.log('albumsController.show responding with', foundAlbum);
+    res.json(foundAlbum);
+  });
+}
+
+
 //
 // // GET /api/albums/:albumId
 // function show(req, res) {
@@ -66,12 +62,6 @@
 // }
 //
 
-// // export public methods here
-// module.exports = {
-//   index: index,
-//   create: create,
-//   show: show,
-//   destroy: destroy,
-//   update: update
-// };
-// //Contact GitHub API Training Shop Blog About
+module.exports = {
+  index: index
+};
