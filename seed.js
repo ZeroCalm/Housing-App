@@ -7,28 +7,28 @@ var db = require("./models");
 
 var houseList =[];
 houseList.push({
-  city: "San Francisco"
+  city: "San Francisco",
   price: "100,000",
   numRooms: 4,
-  url: www.craigslist.com
+  url: "www.craigslist.com"
 });
 houseList.push({
-  city: "San Francisco"
+  city: "San Francisco",
   price: "100,000",
   numRooms: 4,
-  url: www.craigslist.com
+  url: "www.craigslist.com"
 });
 houseList.push({
-  city: "San Francisco"
+  city: "San Francisco",
   price: "100,000",
   numRooms: 4,
-  url: www.craigslist.com
+  url: "www.craigslist.com"
 });
 houseList.push({
-  city: "San Francisco"
+  city: "San Francisco",
   price: "100,000",
   numRooms: 4,
-  url: www.craigslist.com
+  url: "www.craigslist.com"
 });
 
 
