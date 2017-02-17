@@ -4,15 +4,16 @@
 	display: inline;
 }
 
-body {
-	background-color: red;
-}
+
 
 h4 {
 	display: inline;
 	text-align: center;
 }
 
+h1 {
+	color: white;
+}
 
 
 li {
