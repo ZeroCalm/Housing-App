@@ -35,20 +35,9 @@ app.get('/', function homepage (req, res) {
 app.get('/api/houses', controllers.house.index);
 // app.get('/api/albums/:albumId', controllers.albums.show);
 app.post('/api/houses', controllers.house.create);
+app.delete('/api/houses/:houseId', controllers.house.destroy);
 
 
-// // POST /api/albums
-// app.post('/api/houses', function(req, res){
-// db.House.create(req.body, function(err, house) {
-//   if (err) { console.log('error', err); }
-//   console.log(house);
-//   res.json(house);
-//   });
-//
-// });
-
-
-// app.delete('/api/albums/:albumId', controllers.albums.destroy);
 // app.put('/api/albums/:albumId', controllers.albums.update);
 // app.post('/api/albums/:albumId/songs', controllers.albumsSongs.create);
 //
