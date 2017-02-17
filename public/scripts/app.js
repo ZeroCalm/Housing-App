@@ -2,31 +2,44 @@
 $(document).ready(function() {
   console.log('app.js loaded!');
 
-  $.ajax({
-    method: 'GET',
-    url: '/api/houses',
-    success: renderMultipleListings
-  });
+ 	 $.ajax({
+  	  method: 'GET',
+  	  url: '/api/houses',
+  	  success: renderMultipleListings
+	  });
+
+	$
+
+	$('.new-listing').on('submit', function(e){
+		e.preventDefault();
+		 var formData = $(this).serialize();
+		 console.log('formData', formData);
+ 	    $.post('/api/houses', formData, function(listing) {
+ 	      console.log('listing after POST', listing);
+ 	      renderListing(listing);  //render the server's response
+ 	    });
+ 		console.log()
+ 		console.log("anything");
+ 		
+		$(this).trigger("reset");
+	});
 
 
-
-$('.new-listing').on('submit', function(e){
-	e.preventDefault();
-	// var formData = $(this).serialize();
-	// console.log('formData', formData);
- //    $.post('/api/listings', formData, function(listing) {
- //      console.log('listing after POST', listing);
- //      renderListing(listing);  //render the server's response
- //    });
- console.log(sampleListing)
- console.log("anything");
- 	$('.listings-container').prepend(sampleListing);
-    $(this).trigger("reset");
-});
+	$('.delete-listing').on('click', handleDeleteListingClick);
 
 })
 
+var houseId = $('house').find('form').data('house-id');
 
+function handleDeleteListingClick(event){
+	var listingId = $(this).parents('.house').data('house-id');
+  console.log('someone wants to delete album id=' + houseId );
+  $.ajax({
+    url: '/api/houses/' + houseId,
+    method: 'DELETE',
+    success: handleDeleteListingSuccess
+  });
+}
 
 function renderMultipleListings (listings){
 	console.log(listings)
@@ -38,7 +51,7 @@ function renderMultipleListings (listings){
 function renderListing(listing){
 
 var listingHtml=
- `<div class="row album" data-album-id="${listing.name}">
+ `<div class="row house" data-album-id="${listing.name}">
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
@@ -66,8 +79,8 @@ var listingHtml=
             </div>
             <!-- end of album internal row -->
             <div class="panel-footer">
-                <button class="btn btn-danger delete-album">Delete Listing</button>
-                <button class="btn btn-info edit-album">Edit Listing</button>
+                <button class="btn btn-danger delete-listing">Delete Listing</button>
+                <button class="btn btn-info edit-listing">Edit Listing</button>
             </div>
           </div>
         </div>
