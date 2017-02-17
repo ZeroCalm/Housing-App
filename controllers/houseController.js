@@ -14,7 +14,6 @@ function index(req, res) {
   });
 }
 
-
 // POST /api/albums
 function create(req, res) {
   // create an album based on request body and send it back as JSON
