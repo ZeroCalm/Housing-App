@@ -10,6 +10,8 @@ var bodyParser = require('body-parser');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var db = require('mongoose');
+
 var controllers = require('./controllers');
 
 /**********
@@ -32,7 +34,20 @@ app.get('/', function homepage (req, res) {
 // app.get('/api', controllers.api.index);
 app.get('/api/houses', controllers.house.index);
 // app.get('/api/albums/:albumId', controllers.albums.show);
-// app.post('/api/albums', controllers.albums.create);
+// app.post('/api/houses', controllers.house.create);
+
+
+// POST /api/albums
+app.post('/api/houses', function(req, res){
+db.House.create(req.body, function(err, house) {
+  if (err) { console.log('error', err); }
+  console.log(house);
+  res.json(house);
+  });
+
+});
+
+
 // app.delete('/api/albums/:albumId', controllers.albums.destroy);
 // app.put('/api/albums/:albumId', controllers.albums.update);
 // app.post('/api/albums/:albumId/songs', controllers.albumsSongs.create);

@@ -1,4 +1,5 @@
 
+
 /************
  * DATABASE *
  ************/
@@ -13,22 +14,15 @@ function index(req, res) {
   });
 }
 
-// POST /api/albums
+
 function create(req, res) {
-  // create an album based on request body and send it back as JSON
-  console.log('body', req.body);
-
-  // // split at comma and remove and trailing space
-  // var genres = req.body.genres.split(',').map(function(item) { return item.trim(); } );
-  // req.body.genres = genres;
-
-  db.House.create(req.body, function(err, album) {
-    if (err) { console.log('error', err); }
-    console.log(house);
-    res.json(house);
-  });
-}
-
+  // create new book with form data (`req.body`)
+  console.log('houses create', req.body);
+  var newHouse = req.body;
+  newHouse._id = newBookUUID++;
+  houses.push(newHouse);
+  res.json(newHouse);
+};
 
 
 //
@@ -70,5 +64,6 @@ function create(req, res) {
 //
 
 module.exports = {
-  index: index
+  index: index,
+
 };
