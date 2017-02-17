@@ -2,6 +2,12 @@
 $(document).ready(function() {
   console.log('app.js loaded!');
 
+  $.ajax({
+    method: 'GET',
+    url: '/api/houses',
+    success: renderMultipleListings
+  });
+
 var houseList =[];
 houseList.push({
   name: "Beautiful House",
@@ -42,7 +48,7 @@ sampleListing.push({
   url: "www.craigslist.com"
 })
 console.log(sampleListing)
-renderMultipleListings(houseList);
+
 
 $('.new-listing').on('submit', function(e){
 	e.preventDefault();
@@ -63,6 +69,8 @@ $('.new-listing').on('submit', function(e){
 
 
 function renderMultipleListings (listings){
+	console.log(listings)
+	console.log("hello")
 	listings.forEach(function(listing){
 		renderListing(listing);
 	});
