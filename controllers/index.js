@@ -1,3 +1,5 @@
+
+
 module.exports = {
-  api: require('./houseController'),
+  house: require('./houseController'),
 }

@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var controllers = require('./controllers');
 
-
 /**********
  * ROUTES *
  **********/
@@ -31,7 +30,7 @@ app.get('/', function homepage (req, res) {
  */
 //
 // app.get('/api', controllers.api.index);
-// app.get('/api/albums', controllers.albums.index);
+app.get('/api/houses', controllers.house.index);
 // app.get('/api/albums/:albumId', controllers.albums.show);
 // app.post('/api/albums', controllers.albums.create);
 // app.delete('/api/albums/:albumId', controllers.albums.destroy);
