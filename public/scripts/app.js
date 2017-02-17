@@ -34,9 +34,33 @@ console.log(houseList)
 //     success: renderListings
 //   });
 // })
-
-renderMultipleListings(houseList);
+var sampleListing= [];
+sampleListing.push({
+	name: "Beaut House",
+  price: "50",
+  numRooms: 1,
+  url: "www.craigslist.com"
 })
+console.log(sampleListing)
+renderMultipleListings(houseList);
+
+$('.new-listing').on('submit', function(e){
+	e.preventDefault();
+	// var formData = $(this).serialize();
+	// console.log('formData', formData);
+ //    $.post('/api/listings', formData, function(listing) {
+ //      console.log('listing after POST', listing);
+ //      renderListing(listing);  //render the server's response
+ //    });
+ console.log(sampleListing)
+ console.log("anything");
+ 	$('.listings-container').prepend(sampleListing);
+    $(this).trigger("reset");
+});
+
+})
+
+
 
 function renderMultipleListings (listings){
 	listings.forEach(function(listing){
@@ -82,5 +106,5 @@ var listingHtml=
       </div>
     </div>`;
 
-    $('.listings-container').append(listingHtml);
+    $('.listings-container').prepend(listingHtml);
 }
