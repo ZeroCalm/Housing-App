@@ -5,25 +5,29 @@ var db = require("./models");
 
 var houseList =[];
 houseList.push({
-              city: 'San Francisco',
-              price: '$250,000',
-              numRooms: 4,
-              url: "www.craigslist.com"
-            });
+  city: "San Francisco",
+  price: "100,000",
+  numRooms: 4,
+  url: "www.craigslist.com"
+});
 houseList.push({
-              city: 'San Francisco',
-              price: '$250,000',
-              numRooms: 4,
-              url: "www.craigslist.com"
-            });
+  city: "San Francisco",
+  price: "100,000",
+  numRooms: 4,
+  url: "www.craigslist.com"
+});
 houseList.push({
-              city: 'San Francisco',
-              price: '$250,000',
-              numRooms: 4,
-              url: "www.craigslist.com"
-            });
-
-
+  city: "San Francisco",
+  price: "100,000",
+  numRooms: 4,
+  url: "www.craigslist.com"
+});
+houseList.push({
+  city: "San Francisco",
+  price: "100,000",
+  numRooms: 4,
+  url: "www.craigslist.com"
+});
 // db.Album.remove({}, function(err, albums){
 
   db.House.create(houseList, function(err, houses){
