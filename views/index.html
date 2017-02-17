@@ -7,11 +7,11 @@
     <title>Housing App</title>
 
     <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/styles/main.css">
 
     <!-- VENDOR SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
@@ -85,7 +85,8 @@
       </div>
     </section>
 
-    <div class="row album" data-album-id="${album._id}">
+  <section class="edit-delete">
+    
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
@@ -94,31 +95,36 @@
 
               <div class="col-md-9 col-xs-12">
                 <ul class="list-group">
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Name:</h4>
-                    <span class='listing-name'>Beautiful house in SF</span>
+                  <li class="list-group-item col-md-3 ">
+                    <h4 class='inline-header'>Beautiful house in SF</h4>
                   </li>
-                  <li class="list-group-item">
+                  <li class="list-group-item col-md-3">
                     <h4 class='inline-header'>Price:</h4>
                     <span class='price'>$100,000</span>
                   </li>
-                  <li class="list-group-item">
+                  <li class="list-group-item col-md-3">
                     <h4 class='inline-header'>Rooms:</h4>
                     <span class='room-num'>3</span>
                   </li>
-                  <li class="list-group-item">
+                  <li class="list-group-item col-md-3">
                     <h4 class="inline-header">Link:</h4>
-                    ${album.songsHtml}
+                    <span class="url">https://sfbay.craigslist.org/sby/apa/6006711860.html</span>
                   </li>
                 </ul>
               </div>
             </div>
+
             <!-- end of album internal row -->
-            <div class='panel-footer'>
+            
               <div class='panel-footer'>
-                <button class='btn btn-primary add-song'>Add Listing</button>
+                <button class='btn btn-primary add-song'>Delete Listing</button>
+                <button class='btn btn-primary add-song'>Edit Listing</button>
               </div>
-            </div>
+
+          </div>
+        </div>
+      </div>
+  </section>
 <footer>
 
 </footer>
