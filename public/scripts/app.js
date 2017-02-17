@@ -25,15 +25,18 @@ $(document).ready(function() {
 	});
 
 
-	$('.delete-listing').on('click', handleDeleteListingClick);
-
+	//$('.house').on('click', '.delete-listing', handleDeleteListingClick);
+	$('.delete-listing').on('click',function(e){
+		e.preventDefault();
+		console.log("heeey");
+	})
 })
 
 var houseId = $('house').find('form').data('house-id');
 
 function handleDeleteListingClick(event){
 	var listingId = $(this).parents('.house').data('house-id');
-  console.log('someone wants to delete album id=' + houseId );
+  console.log('someone wants to delete house id=' + houseId );
   $.ajax({
     url: '/api/houses/' + houseId,
     method: 'DELETE',
@@ -51,11 +54,11 @@ function renderMultipleListings (listings){
 function renderListing(listing){
 
 var listingHtml=
- `<div class="row house" data-album-id="${listing.name}">
+ `<div class="row house" data-house-id="${listing.name}">
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
-          <!-- begin album internal row -->
+          <!-- begin house internal row -->
             <div class="row">
               <div class="col-md-12 col-xs-12">
                 <ul class="list-group">
@@ -77,7 +80,7 @@ var listingHtml=
                 </ul>
               </div>
             </div>
-            <!-- end of album internal row -->
+            <!-- end of house internal row -->
             <div class="panel-footer">
                 <button class="btn btn-danger delete-listing">Delete Listing</button>
                 <button class="btn btn-info edit-listing">Edit Listing</button>
