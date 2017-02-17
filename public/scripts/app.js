@@ -5,7 +5,7 @@ $(document).ready(function() {
   $.ajax({
     method: 'GET',
     url: '/api/houses',
-    success: renderMultipleListing
+    success: renderMultipleListings
   });
 
 var houseList =[];
@@ -70,6 +70,7 @@ $('.new-listing').on('submit', function(e){
 
 function renderMultipleListings (listings){
 	console.log(listings)
+	console.log("hello")
 	listings.forEach(function(listing){
 		renderListing(listing);
 	});
