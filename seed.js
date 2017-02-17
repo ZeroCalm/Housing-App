@@ -22,8 +22,6 @@ houseList.push({
               numRooms: 4,
               url: "www.craigslist.com"
             });
-
-
 // db.Album.remove({}, function(err, albums){
 
   db.House.create(houseList, function(err, houses){
