@@ -18,7 +18,6 @@ function index(req, res) {
 function create(req, res) {
   // create an album based on request body and send it back as JSON
   console.log('body', req.body);
-
   db.House.create(req.body, function(err, house) {
     if (err) { console.log('error', err); }
     console.log(house);
@@ -30,7 +29,7 @@ function create(req, res) {
 // DELETE /api/albums/:albumId
 function destroy(req, res) {
   // find one album by id, delete it, and send it back as JSON
-  db.Album.findOneAndRemove({ _id: req.params.albumId }, function(err, foundHouse){
+  db.House.findOneAndRemove({ _id: req.params.houseId }, function(err, foundHouse){
     // note you could send just send 204, but we're sending 200 and the deleted entity
     res.json(foundHouse);
   });
