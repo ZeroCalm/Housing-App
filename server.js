@@ -34,18 +34,18 @@ app.get('/', function homepage (req, res) {
 // app.get('/api', controllers.api.index);
 app.get('/api/houses', controllers.house.index);
 // app.get('/api/albums/:albumId', controllers.albums.show);
-// app.post('/api/houses', controllers.house.create);
+app.post('/api/houses', controllers.house.create);
 
 
-// POST /api/albums
-app.post('/api/houses', function(req, res){
-db.House.create(req.body, function(err, house) {
-  if (err) { console.log('error', err); }
-  console.log(house);
-  res.json(house);
-  });
-
-});
+// // POST /api/albums
+// app.post('/api/houses', function(req, res){
+// db.House.create(req.body, function(err, house) {
+//   if (err) { console.log('error', err); }
+//   console.log(house);
+//   res.json(house);
+//   });
+//
+// });
 
 
 // app.delete('/api/albums/:albumId', controllers.albums.destroy);
