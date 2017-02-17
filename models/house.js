@@ -3,11 +3,11 @@ var mongoose = require('mongoose'),
 
   var HouseSchema = new Schema({
     city: String,
-    price: Number,
+    price: String,
     numRooms: Number,
     url: String
   });
-
+///comment
 var House = mongoose.model('House', HouseSchema);
 
 module.exports = House;
