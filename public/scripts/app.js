@@ -35,7 +35,7 @@ console.log(houseList)
 //   });
 // })
 
-renderListing(houseList[0]);
+renderMultipleListings(houseList);
 })
 
 function renderMultipleListings (listings){
