@@ -4,6 +4,3 @@ var House = require('./house');
 // var Price = require()
 
 module.exports.House = House;
-
-//WIll add line below after citySchema is created.
-//module.exports.City = require('./city');

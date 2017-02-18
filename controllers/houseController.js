@@ -24,7 +24,7 @@ function show(req, res) {
 
 // POST /api/houses
 function create(req, res) {
-  // create an house based on request body and send it back as JSON
+  // create a house based on request body and send it back as JSON
   console.log('body', req.body);
   db.House.create(req.body, function(err, house) {
     if (err) {
@@ -44,6 +44,7 @@ function destroy(req, res) {
     res.json(foundHouse);
   });
 }
+
 
 function edit(req, res) {
   db.House.findById(req.params.houseId, function(err, house) {
@@ -72,16 +73,8 @@ function update(req, res) {
 
       }
     });
-
-    house.save(function(err, savedhouse) {
-      if (err) {
-        res.send(err);
-      }
-      res.json(savedhouse);
-    });
   });
 }
-
 
 module.exports = {
   index: index,
