@@ -1,5 +1,3 @@
-
-
 /************
  * DATABASE *
  ************/
@@ -23,15 +21,15 @@ function show(req, res) {
     res.json(foundHouse);
   });
 }
-
-
 // POST /api/houses
 function create(req, res) {
   // create an house based on request body and send it back as JSON
   console.log('body', req.body);
   db.House.create(req.body, function(err, house) {
-    if (err) { console.log('error', err); }
-    console.log(house);
+    if (err) {
+      res.json(err);
+    }
+
     res.json(house);
   });
 }
