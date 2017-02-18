@@ -24,6 +24,7 @@
     "bower": "^1.8.0",
     "consolidate": "^0.14.5",
     "express": "^4.14.1",
+    "handlebars": "^4.0.6",
     "mongoose": "^4.8.2",
     "nodemon": "^1.11.0",
     "swig": "^1.4.2"

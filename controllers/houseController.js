@@ -51,8 +51,11 @@ function edit(req, res) {
     if (err) {
       res.send(err);
     } else {
+      // res.json(house);
       res.render('edit', {
-        'city': house.city
+        city: house.city,
+        numRooms: house.numRooms,
+        url: house.url
       });
     }
   });
