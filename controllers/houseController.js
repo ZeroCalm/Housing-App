@@ -27,7 +27,7 @@ function show(req, res) {
 
 // POST /api/houses
 function create(req, res) {
-  // create an house based on request body and send it back as JSON
+  // create a house based on request body and send it back as JSON
   console.log('body', req.body);
   db.House.create(req.body, function(err, house) {
     if (err) { console.log('error', err); }
@@ -45,31 +45,31 @@ function destroy(req, res) {
     res.json(foundHouse);
   });
 }
-//
 
+// PUT or PATCH /api/houses/:houseId
+function update(req, res) {
+  // find one house by id, update it based on request body,
+  // and send it back as JSON
+  console.log('updating with data', req.body);
+  db.House.findById(req.params.houseId, function(err, foundhouse) {
+    if(err) { console.log('housesController.update error', err); }
+    foundhouse.city = req.body.city;
+    foundhouse.price = req.body.price;
+    foundhouse.numRooms = req.body.numRooms;
+    foundhouse.url = req.body.url;
 
-//
-// // PUT or PATCH /api/houses/:houseId
-// function update(req, res) {
-//   // find one house by id, update it based on request body,
-//   // and send it back as JSON
-//   console.log('updating with data', req.body);
-//   db.house.findById(req.params.houseId, function(err, foundhouse) {
-//     if(err) { console.log('housesController.update error', err); }
-//     foundhouse.artistName = req.body.artistName;
-//     foundhouse.name = req.body.name;
-//     foundhouse.releaseDate = req.body.releaseDate;
-//     foundhouse.save(function(err, savedhouse) {
-//       if(err) { console.log('saving altered house failed'); }
-//       res.json(savedhouse);
-//     });
-//   });
-// }
-//
+    foundhouse.save(function(err, savedhouse) {
+      if(err) { console.log('saving altered house failed'); }
+      res.json(savedhouse);
+    });
+  });
+}
+
 
 module.exports = {
   index: index,
   create: create,
   destroy: destroy,
-  show: show
+  show: show,
+  update: update
 };
