@@ -36,7 +36,7 @@ app.get('/api/houses', controllers.house.index);
 app.get('/api/houses/:houseId', controllers.house.show);
 app.post('/api/houses', controllers.house.create);
 app.delete('/api/houses/:houseId', controllers.house.destroy);
-// app.put('/api/albums/:albumId', controllers.albums.update);
+app.put('/api/houses/:houseId', controllers.house.update);
 
 
 /**********
