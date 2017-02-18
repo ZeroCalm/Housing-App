@@ -2,6 +2,9 @@
 
 //require express in our app
 var express = require('express');
+var cons = require('consolidate');
+var path = require('path');
+
 // generate a new express app and call it 'app'
 var app = express();
 var bodyParser = require('body-parser');
@@ -9,6 +12,10 @@ var bodyParser = require('body-parser');
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.engine('html', cons.swig);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
 
 var db = require('mongoose');
 
@@ -36,7 +43,8 @@ app.get('/api/houses', controllers.house.index);
 app.get('/api/houses/:houseId', controllers.house.show);
 app.post('/api/houses', controllers.house.create);
 app.delete('/api/houses/:houseId', controllers.house.destroy);
-app.put('/api/houses/:houseId', controllers.house.update);
+app.get('/api/houses/:houseId/edit', controllers.house.edit);
+app.put('/api/houses/:houseId/edit', controllers.house.update);
 
 
 /**********
