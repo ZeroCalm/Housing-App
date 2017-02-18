@@ -2,12 +2,14 @@
 $(document).ready(function() {
   // console.log('app.js loaded!');
 
-  $.ajax({
-    method: 'GET',
-    url: '/api/houses',
-    success: renderMultipleListings
-  });
+ 	 $.ajax({
+  	  method: 'GET',
+  	  url: '/api/houses',
+  	  success: renderMultipleListings
+	  });
 
+<<<<<<< HEAD
+=======
 
 /*  This will be the edit function
 
@@ -62,8 +64,19 @@ alert('Fail');
 // });
 
 });
+>>>>>>> 38aee0c5a2073137c8f4e0fff6cff2b1e7a4b2da
 
+var houseId = $('house').find('form').data('house-id');
 
+function handleDeleteListingClick(event){
+	var listingId = $(this).parents('.house').data('house-id');
+  console.log('someone wants to delete house id=' + houseId );
+  $.ajax({
+    url: '/api/houses/' + houseId,
+    method: 'DELETE',
+    success: handleDeleteListingSuccess
+  });
+}
 
 function renderMultipleListings(listings) {
 	// console.log(listings)
@@ -76,11 +89,11 @@ function renderMultipleListings(listings) {
 function renderListing(listing) {
 
 var listingHtml=
- `<div class="row album" data-album-id="${listing.name}">
+ `<div class="row house" data-house-id="${listing.name}">
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
-          <!-- begin album internal row -->
+          <!-- begin house internal row -->
             <div class="row">
               <div class="col-md-12 col-xs-12">
                 <ul class="list-group">
@@ -102,10 +115,13 @@ var listingHtml=
                 </ul>
               </div>
             </div>
-            <!-- end of album internal row -->
+            <!-- end of house internal row -->
             <div class="panel-footer">
+<<<<<<< HEAD
+=======
                 <button class="btn btn-danger delete-album">Delete Listing</button>
                 <a href="edit_page.html" class="btn btn-info edit-album">Edit Listing</a>
+>>>>>>> 38aee0c5a2073137c8f4e0fff6cff2b1e7a4b2da
             </div>
           </div>
         </div>
@@ -113,6 +129,14 @@ var listingHtml=
     </div>`;
 
     $('.listings-container').prepend(listingHtml);
+    $('.delete-listing').click(function(){
+		$(this).closest('.house').empty();
+		$.ajax({
+    	url: '/api/houses/' + houseId,
+    	method: 'DELETE',
+    	success: handleDeleteListingSuccess
+		});
+	})
 }
 
 
