@@ -8,7 +8,7 @@ $(document).ready(function() {
   	  success: renderMultipleListings
 	  });
 
-	$
+	
 
 	$('.new-listing').on('submit', function(e){
 		e.preventDefault();
@@ -24,13 +24,15 @@ $(document).ready(function() {
 		$(this).trigger("reset");
 	});
 
-
+ 
 	//$('.house').on('click', '.delete-listing', handleDeleteListingClick);
-	$('.delete-listing').on('click',function(e){
-		e.preventDefault();
-		console.log("heeey");
-	})
-})
+
+});
+
+function handleDeleteListingSuccess(listing){
+	console.log("listing deleted", listing);
+}
+
 
 var houseId = $('house').find('form').data('house-id');
 
@@ -91,4 +93,12 @@ var listingHtml=
     </div>`;
 
     $('.listings-container').prepend(listingHtml);
+    $('.delete-listing').click(function(){
+		$(this).closest('.house').empty();
+		$.ajax({
+    	url: '/api/houses/' + houseId,
+    	method: 'DELETE',
+    	success: handleDeleteListingSuccess
+		});
+	})
 }
