@@ -1,5 +1,3 @@
-
-
 /************
  * DATABASE *
  ************/
@@ -24,14 +22,15 @@ function show(req, res) {
   });
 }
 
-
 // POST /api/houses
 function create(req, res) {
-  // create an house based on request body and send it back as JSON
+  // create a house based on request body and send it back as JSON
   console.log('body', req.body);
   db.House.create(req.body, function(err, house) {
-    if (err) { console.log('error', err); }
-    console.log(house);
+    if (err) {
+      res.json(err);
+    }
+
     res.json(house);
   });
 }
@@ -45,31 +44,43 @@ function destroy(req, res) {
     res.json(foundHouse);
   });
 }
-//
 
 
-//
-// // PUT or PATCH /api/houses/:houseId
-// function update(req, res) {
-//   // find one house by id, update it based on request body,
-//   // and send it back as JSON
-//   console.log('updating with data', req.body);
-//   db.house.findById(req.params.houseId, function(err, foundhouse) {
-//     if(err) { console.log('housesController.update error', err); }
-//     foundhouse.artistName = req.body.artistName;
-//     foundhouse.name = req.body.name;
-//     foundhouse.releaseDate = req.body.releaseDate;
-//     foundhouse.save(function(err, savedhouse) {
-//       if(err) { console.log('saving altered house failed'); }
-//       res.json(savedhouse);
-//     });
-//   });
-// }
-//
+function edit(req, res) {
+  db.House.findById(req.params.houseId, function(err, house) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.render('edit', {
+        'city': house.city
+      });
+    }
+  });
+}
+
+// PUT or PATCH /api/houses/:houseId/edit
+function update(req, res) {
+  db.House.findById(req.params.houseId, function(err, house) {
+    house.update({
+      city: req.body.city,
+      price: req.body.price,
+      numRooms: req.body.numRooms,
+      url: req.body.url
+    }, function(err, houseId) {
+      if (err) {
+        res.send(err);
+      } else {
+
+      }
+    });
+  });
+}
 
 module.exports = {
   index: index,
   create: create,
   destroy: destroy,
-  show: show
+  show: show,
+  edit: edit,
+  update: update
 };

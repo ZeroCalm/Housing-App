@@ -17,7 +17,8 @@
     <script src="/scripts/app.js"></script>
   </head>
   <body>
-  <!-- Header -->
+
+    <!-- Header -->
   	<div class="jumbotron">
       <div class="container">
         <h1>Housing App</h1>
@@ -25,66 +26,54 @@
       </div>
     </div>
 
-  <!-- New Listing box -->
-  	    <section id='listing-form' class="container">
+    <!-- New Listing box -->
+    <section id='listing-form' class="container">
+
       <div class="row">
-      <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1">
 
-        <form class="new-listing form-horizontal">
-          <fieldset>
+          <form class="new-listing form-horizontal">
 
-            <!-- Form Name -->
             <legend>Add New Listing</legend>
 
-            <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="name">Listing Name</label>
+              <label class="col-md-4 control-label" for="name">House Address</label>
               <div class="col-md-4">
-              <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
-
+                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" />
               </div>
             </div>
 
-            <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="price">Price</label>
               <div class="col-md-4">
-              <input id="price" name="price" type="text" placeholder="$100,000" class="form-control input-md">
-
+                <input id="price" name="price" type="text" placeholder="$100,000" class="form-control input-md" />
               </div>
             </div>
 
-            <!-- Text input-->
+
             <div class="form-group">
               <label class="col-md-4 control-label" for="rooms">Number of Rooms</label>
               <div class="col-md-4">
-              <input id="rooms" name="rooms" type="text" placeholder="3" class="form-control input-md">
-
+                <input id="rooms" name="rooms" type="text" placeholder="3" class="form-control input-md" />
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 control-label" for="url">Link</label>
               <div class="col-md-4">
-              <input id="url" name="url" type="text" placeholder="http:..." class="form-control input-md">
-
+                <input id="url" name="url" type="text" placeholder="http:..." class="form-control input-md" />
               </div>
             </div>
 
-
-            <!-- Button -->
+            <!-- submit -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="singlebutton">Save Listing</label>
               <div class="col-md-4">
                 <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
               </div>
             </div>
-          </fieldset>
-        </form>
-      </div>
-      </div>
-    </section>
 
+<<<<<<< HEAD
   <div class="listings-container">
   
     </div>
@@ -94,8 +83,17 @@
 
 </footer>
 </body>
+=======
+          </form>
+>>>>>>> 38aee0c5a2073137c8f4e0fff6cff2b1e7a4b2da
 
+        </div> <!-- col -->
+      </div> <!-- row -->
 
+    </section>
 
+    <!-- render listings -->
+    <div class="listings-container"></div>
 
+  </body>
 </html>
