@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var HouseSchema = new Schema({
-  Address: String,
+  city: String,
   price: {
     type: Number,
     min: [30000, 'This is San Francisco, Are you Crazy?']
