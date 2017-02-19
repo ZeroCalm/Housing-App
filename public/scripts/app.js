@@ -58,11 +58,8 @@ var listingHtml=
             </div>
             <!-- end of house internal row -->
             <div class="panel-footer">
-
-
                 <button class="btn btn-danger delete-album">Delete Listing</button>
-                <a href="edit_page.html" class="btn btn-info edit-album">Edit Listing</a>
-
+                <a href="api/houses/${listing._id}/edit" class="btn btn-info edit-album">Edit Listing</a>
             </div>
           </div>
         </div>
