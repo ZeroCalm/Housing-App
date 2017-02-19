@@ -2,8 +2,7 @@
 
 //require express in our app
 var express = require('express');
-var cons = require('consolidate');
-var path = require('path');
+var swig = require('swig');
 
 // generate a new express app and call it 'app'
 var app = express();
@@ -13,8 +12,10 @@ var bodyParser = require('body-parser');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.engine('html', cons.swig);
-app.set('views', path.join(__dirname, 'views'));
+// template engine
+// disable swig cache for dev, set to true for prod
+var swig = new swig.Swig({cache: false});
+app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 
 var db = require('mongoose');

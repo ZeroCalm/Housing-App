@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Edit House</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- APPLICATION SCRIPTS -->
+    <script src="/scripts/app.js"></script>
+  </head>
+  <body>
+
+    <section class="container">
+
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+          <form id="edit-house" class="new-listing form-horizontal">
+
+            <legend>Edit Listing</legend>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="name">House Address</label>
+              <div class="col-md-4">
+                <input id="name" name="name" type="text" class="form-control input-md" value="{{city}}" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="price">Price</label>
+              <div class="col-md-4">
+                <input id="price" name="price" type="text" class="form-control input-md" value={{price}} />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="rooms">Number of Rooms</label>
+              <div class="col-md-4">
+                <input id="rooms" name="rooms" type="text" class="form-control input-md" value={{numRooms}} />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="url">Link</label>
+              <div class="col-md-4">
+                <input id="url" name="url" type="text" class="form-control input-md" value="{{url}}" />
+              </div>
+            </div>
+
+            <!-- submit -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton">Update Listing</label>
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+
+          </form>
+
+        </div> <!-- col -->
+      </div> <!-- row -->
+
+    </section>
+
+  </body>
+</html>
