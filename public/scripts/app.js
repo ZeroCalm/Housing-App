@@ -2,9 +2,7 @@
 $(document).ready(function() {
 
 
-<<<<<<< HEAD
 
-=======
   $.ajax({
     method: 'GET',
     url: '/api/houses',
@@ -122,17 +120,9 @@ var listingHtml=
             <!-- end of house internal row -->
             <div class="panel-footer">
 
-<<<<<<< HEAD
                 <button class="btn btn-danger delete-album">Delete Listing</button>
                 <a href="edit_page.html" class="btn btn-info edit-album">Edit Listing</a>
 
-
-=======
-
-                <button class="btn btn-danger delete-album">Delete Listing</button>
-                <a href="edit_page.html" class="btn btn-info edit-album">Edit Listing</a>
-
->>>>>>> b1881c373496952329b55590ec3ccf8c45e79fe8
             </div>
           </div>
         </div>
