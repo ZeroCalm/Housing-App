@@ -2,7 +2,9 @@
 $(document).ready(function() {
 
 
+<<<<<<< HEAD
 
+=======
   $.ajax({
     method: 'GET',
     url: '/api/houses',
@@ -48,19 +50,19 @@ alert('Fail');
 // console.log(sampleListing)
 
 
-$('.new-listing').on('submit', function(e){
-	e.preventDefault();
-	var formData = $(this).serialize();
-	console.log('formData', formData);
-    $.post('/api/listings', formData, function(listing) {
-      console.log('listing after POST', listing);
-      renderListing(listing);  //render the server's response
-    });
- console.log(sampleListing)
- console.log("anything");
- 	$('.listings-container').prepend(sampleListing);
-    $(this).trigger("reset");
-});
+// $('.new-listing').on('submit', function(e){
+// 	e.preventDefault();
+// 	// var formData = $(this).serialize();
+// 	// console.log('formData', formData);
+//  //    $.post('/api/listings', formData, function(listing) {
+//  //      console.log('listing after POST', listing);
+//  //      renderListing(listing);  //render the server's response
+//  //    });
+//  console.log(sampleListing)
+//  console.log("anything");
+//  	$('.listings-container').prepend(sampleListing);
+//     $(this).trigger("reset");
+// });
 
 
 
