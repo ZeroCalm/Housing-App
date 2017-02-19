@@ -1,73 +1,14 @@
 
 $(document).ready(function() {
-  // console.log('app.js loaded!');
 
   $.ajax({
     method: 'GET',
     url: '/api/houses',
     success: renderMultipleListings
   });
-
-
-/*  This will be the edit function
-
-  $('.edit-album').click(function(){
-      $.ajax({
-          type: 'PUT',
-          url: '/api/albums/:albumId',
-          //  data: ,
-          //datatype: 'html',
-          //cache: 'false',
-          success: function(response) {
-              $('#chatroom').append(response);
-              alert('Load was performed.');
-          },
-          error: function(){
-              alert('Fuuuuuuuuuuuuuu');
-          }
-}); // End Ajax
-
-alert('Fail');
-
-}); // End onclick
-
-
-
-*/
-
-
-
-// var sampleListing= [];
-// sampleListing.push({
-// 	name: "Beaut House",
-//   price: "50",
-//   numRooms: 1,
-//   url: "www.craigslist.com"
-// })
-// console.log(sampleListing)
-
-
-// $('.new-listing').on('submit', function(e){
-// 	e.preventDefault();
-// 	// var formData = $(this).serialize();
-// 	// console.log('formData', formData);
-//  //    $.post('/api/listings', formData, function(listing) {
-//  //      console.log('listing after POST', listing);
-//  //      renderListing(listing);  //render the server's response
-//  //    });
-//  console.log(sampleListing)
-//  console.log("anything");
-//  	$('.listings-container').prepend(sampleListing);
-//     $(this).trigger("reset");
-// });
-
 });
 
-
-
 function renderMultipleListings(listings) {
-	// console.log(listings)
-	// console.log("hello")
 	listings.forEach(function(listing) {
 		renderListing(listing);
 	});
@@ -114,42 +55,3 @@ var listingHtml=
 
     $('.listings-container').prepend(listingHtml);
 }
-
-
-
-
-
-///////////HARD-CODED DATA///////////
-
-// var houseList =[];
-// houseList.push({
-//   name: "Beautiful House",
-//   price: "500,000",
-//   numRooms: 4,
-//   url: "www.craigslist.com"
-// });
-// houseList.push({
-//   name: "Ugly house",
-//   price: "90,000",
-//   numRooms: 4,
-//   url: "www.craigslist.com"
-// });
-// houseList.push({
-//   name: "another house",
-//   price: "80,500",
-//   numRooms: 4,
-//   url: "www.craigslist.com"
-// });
-// houseList.push({
-//   name: "house again",
-//   price: "220,000",
-//   numRooms: 4,
-//   url: "www.craigslist.com"
-// });
-// console.log(houseList)
-// //   $.ajax({
-// //     method: 'GET',
-// //     url: '/api/listings',
-// //     success: renderListings
-// //   });
-// // })
