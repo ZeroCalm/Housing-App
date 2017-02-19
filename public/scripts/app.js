@@ -2,6 +2,7 @@
 $(document).ready(function() {
 
 
+
   $.ajax({
     method: 'GET',
     url: '/api/houses',
@@ -47,19 +48,20 @@ alert('Fail');
 // console.log(sampleListing)
 
 
-// $('.new-listing').on('submit', function(e){
-// 	e.preventDefault();
-// 	// var formData = $(this).serialize();
-// 	// console.log('formData', formData);
-//  //    $.post('/api/listings', formData, function(listing) {
-//  //      console.log('listing after POST', listing);
-//  //      renderListing(listing);  //render the server's response
-//  //    });
-//  console.log(sampleListing)
-//  console.log("anything");
-//  	$('.listings-container').prepend(sampleListing);
-//     $(this).trigger("reset");
-// });
+$('.new-listing').on('submit', function(e){
+	e.preventDefault();
+	var formData = $(this).serialize();
+	console.log('formData', formData);
+    $.post('/api/listings', formData, function(listing) {
+      console.log('listing after POST', listing);
+      renderListing(listing);  //render the server's response
+    });
+ console.log(sampleListing)
+ console.log("anything");
+ 	$('.listings-container').prepend(sampleListing);
+    $(this).trigger("reset");
+});
+
 
 
 });
@@ -118,10 +120,17 @@ var listingHtml=
             <!-- end of house internal row -->
             <div class="panel-footer">
 
+<<<<<<< HEAD
+                <button class="btn btn-danger delete-album">Delete Listing</button>
+                <a href="edit_page.html" class="btn btn-info edit-album">Edit Listing</a>
+
+
+=======
 
                 <button class="btn btn-danger delete-album">Delete Listing</button>
                 <a href="edit_page.html" class="btn btn-info edit-album">Edit Listing</a>
 
+>>>>>>> b1881c373496952329b55590ec3ccf8c45e79fe8
             </div>
           </div>
         </div>
