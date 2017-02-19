@@ -5,7 +5,40 @@ $(document).ready(function() {
     url: '/api/houses',
     success: renderMultipleListings
   });
+
+  $('#edit-house').on('submit', function(e) {
+    e.preventDefault();
+    console.log('Submitted!!!!');
+    $.ajax({
+      url: '/api/houses/:id/edit',
+      type: 'PUT',
+      dataType: 'json',
+      data: $(this).serialize(),
+      success: function (res) {
+        console.log(res);
+      },
+      error: function (err) {
+        console.log();
+      }
+    });
+
+
+  });
 });
+
+// $('.new-listing').on('submit', function(e){
+// 	e.preventDefault();
+// 	// var formData = $(this).serialize();
+// 	// console.log('formData', formData);
+//  //    $.post('/api/listings', formData, function(listing) {
+//  //      console.log('listing after POST', listing);
+//  //      renderListing(listing);  //render the server's response
+//  //    });
+//  console.log(sampleListing)
+//  console.log("anything");
+//  	$('.listings-container').prepend(sampleListing);
+//     $(this).trigger("reset");
+// });
 
 
 var houseId = $('house').find('form').data('house-id');

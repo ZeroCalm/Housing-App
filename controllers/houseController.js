@@ -74,7 +74,7 @@ function update(req, res) {
       if (err) {
         res.send(err);
       } else {
-
+        res.send('Updated house');
       }
     });
   });
