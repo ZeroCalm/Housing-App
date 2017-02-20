@@ -60,6 +60,50 @@ $('.new-listing').on('submit', function(e){
     $(this).trigger("reset");
 });
 
+$('#edit-house').on('submit', function(e) {
+    e.preventDefault();
+    console.log('Submitted!!!!');
+    $.ajax({
+      url: '/api/houses/${listing._id}/edit',
+      type: 'PUT',
+      dataType: 'json',
+      data: $(this).serialize(),
+      success: function (res) {
+        console.log(res);
+      },
+      error: function (err) {
+        console.log();
+      }
+    });
+
+
+ });
+
+
+$('.search-cities').on('submit', function(e){
+	e.preventDefault();
+	var formData = this.val;
+	console.log(formData);
+	$.ajax({
+   	  method: 'GET',
+      url: '/api/houses',
+      success: renderByCity
+  });
+	function renderByCity(listings){
+	//listings.forEach(function(listing){
+		console.log("happy")
+
+		listings.forEach(function(listing){
+			console.log(formData)
+			console.log(listing.city)
+			if(listing.city===formData){
+				renderListing(listing)
+			}
+		})
+	}
+
+})
+
 
 
 });
@@ -68,6 +112,9 @@ $('.new-listing').on('submit', function(e){
 
 
 var houseId = $('house').find('form').data('house-id');
+
+
+
 
 function handleDeleteListingClick(event){
 	var listingId = $(this).parents('.house').data('house-id');
@@ -102,6 +149,9 @@ var listingHtml=
               <div class="col-md-12 col-xs-12">
                 <ul class="list-group">
                   <li class="list-group-item">
+                    <h4 class="inline-header">${listing.city}</h4>
+                  </li>
+                  <li class="list-group-item">
                     <h4 class="inline-header">${listing.name}</h4>
                   </li>
                   <li class="list-group-item">
@@ -123,7 +173,7 @@ var listingHtml=
             <div class="panel-footer">
 
                 <button class="btn delete-listing">Delete Listing</button>
-                <a href="edit_page.html" class="btn btn-info edit-listing">Edit Listing</a>
+                <a href="api/houses/${listing._id}/edit" class="btn btn-info edit-listing">Edit Listing</a>
 
             </div>
           </div>

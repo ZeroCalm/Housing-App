@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var HouseSchema = new Schema({
+  city: String,
   name: String,
   price: {
     type: Number,

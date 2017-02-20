@@ -27,14 +27,30 @@
     </div>
 
     <!-- New Listing box -->
-    <section id='listing-form' class="container">
+    <section id='listing-forms' class="container">
 
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
+      <form class="search-cities form-horizontal">
+        <legend>Search listings by city</legend>
+            <div class="form-group">
+               <div class="col-md-4">
+                  <input id="name" name="city" type="text" placeholder="San francisco" class="form-control input-md" />
+               </div>
+           </div>
+      </form>
+            <hr>
           <form class="new-listing form-horizontal">
 
             <legend>Add New Listing</legend>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="city">City</label>
+              <div class="col-md-4">
+                <input id="city" name="city" type="text" placeholder="San Francisco" class="form-control input-md" />
+              </div>
+            </div>
 
             <div class="form-group">
               <label class="col-md-4 control-label" for="name">House Address</label>

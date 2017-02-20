@@ -46,6 +46,8 @@ app.post('/api/houses', controllers.house.create);
 app.delete('/api/houses/:houseId', controllers.house.destroy);
 app.get('/api/houses/:houseId/edit', controllers.house.edit);
 app.put('/api/houses/:houseId/edit', controllers.house.update);
+app.get('/api/houses/:houseId/edit', controllers.house.edit);
+app.put('/api/houses/:houseId/edit', controllers.house.update);
 
 /**********
  * SERVER *

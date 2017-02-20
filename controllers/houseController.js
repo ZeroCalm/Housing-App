@@ -22,6 +22,7 @@ function show(req, res) {
   });
 }
 
+
 // POST /api/houses
 function create(req, res) {
   // create a house based on request body and send it back as JSON
