@@ -4,7 +4,9 @@
 	display: inline;
 }
 
-
+body {
+	background-color: #F4E3C9 !important;
+}
 
 h4 {
 	display: inline;
@@ -18,4 +20,25 @@ h1 {
 
 li {
 	display: inline-block;
+}
+
+.jumbotron {
+	background-color: #CFDAF0 !important;
+}
+
+.delete-listing {
+	background-color: #F48B94 ;
+	color: white;
+}
+
+.panel-body {
+	background-color: #B5DCE1;
+}
+
+.panel-footer {
+	background-color: #F4D9D0 !important;
+}
+
+.list-group-item {
+	background-color: #F4EFEC !important;
 }

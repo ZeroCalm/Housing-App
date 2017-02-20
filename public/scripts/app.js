@@ -48,19 +48,17 @@ alert('Fail');
 // console.log(sampleListing)
 
 
-// $('.new-listing').on('submit', function(e){
-// 	e.preventDefault();
-// 	// var formData = $(this).serialize();
-// 	// console.log('formData', formData);
-//  //    $.post('/api/listings', formData, function(listing) {
-//  //      console.log('listing after POST', listing);
-//  //      renderListing(listing);  //render the server's response
-//  //    });
-//  console.log(sampleListing)
-//  console.log("anything");
-//  	$('.listings-container').prepend(sampleListing);
-//     $(this).trigger("reset");
-// });
+$('.new-listing').on('submit', function(e){
+	e.preventDefault();
+	var formData = $(this).serialize();
+	console.log('formData', formData);
+    $.post('/api/houses', formData, function(listing) {
+      console.log('listing after POST', listing);
+      renderListing(listing);  //render the server's response
+    });
+ console.log("anything");
+    $(this).trigger("reset");
+});
 
 
 
@@ -79,6 +77,10 @@ function handleDeleteListingClick(event){
     method: 'DELETE',
     success: handleDeleteListingSuccess
   });
+}
+
+function handleDeleteListingSuccess(){
+	console.log("seccusful delete!")
 }
 
 
@@ -112,7 +114,7 @@ var listingHtml=
                   </li>
                   <li class="list-group-item">
                     <h4 class="inline-header">Link:</h4>
-                    <span>${listing.url}</span>
+                    <a href='${listing.url}'>${listing.url}</a>
                   </li>
                 </ul>
               </div>
@@ -120,8 +122,8 @@ var listingHtml=
             <!-- end of house internal row -->
             <div class="panel-footer">
 
-                <button class="btn btn-danger delete-album">Delete Listing</button>
-                <a href="edit_page.html" class="btn btn-info edit-album">Edit Listing</a>
+                <button class="btn delete-listing">Delete Listing</button>
+                <a href="edit_page.html" class="btn btn-info edit-listing">Edit Listing</a>
 
             </div>
           </div>
@@ -131,11 +133,13 @@ var listingHtml=
 
     $('.listings-container').prepend(listingHtml);
     $('.delete-listing').click(function(){
-		$(this).closest('.house').empty();
+    	console.log("ff")
 		$.ajax({
-    	url: '/api/houses/' + houseId,
+    	url: '/api/houses/' + listing._id,
     	method: 'DELETE',
     	success: handleDeleteListingSuccess
 		});
+		$(this).closest('.house').empty();
 	})
+	
 }
