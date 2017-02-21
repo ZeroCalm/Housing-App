@@ -1,53 +1,13 @@
 
 $(document).ready(function() {
 
-
-
   $.ajax({
     method: 'GET',
     url: '/api/houses',
     success: renderMultipleListings
   });
 
-  
-/*  This will be the edit function
-
-  $('.edit-album').click(function(){
-      $.ajax({
-          type: 'PUT',
-          url: '/api/albums/:albumId',
-          //  data: ,
-          //datatype: 'html',
-          //cache: 'false',
-          success: function(response) {
-              $('#chatroom').append(response);
-              alert('Load was performed.');
-          },
-          error: function(){
-              alert('Fuuuuuuuuuuuuuu');
-          }
-}); // End Ajax
-
-alert('Fail');
-
-}); // End onclick
-
-
-
-*/
-
-
-
-// var sampleListing= [];
-// sampleListing.push({
-// 	name: "Beaut House",
-//   price: "50",
-//   numRooms: 1,
-//   url: "www.craigslist.com"
-// })
-// console.log(sampleListing)
-
-
+//post new listing
 $('.new-listing').on('submit', function(e){
 	e.preventDefault();
 	var formData = $(this).serialize();
@@ -61,7 +21,7 @@ $('.new-listing').on('submit', function(e){
 });
 
 
-
+//search by neighborhood
 $('.search-cities').on('submit', function(e){
 	e.preventDefault();
 	var data= $(this).serializeArray()
@@ -76,14 +36,12 @@ $('.search-cities').on('submit', function(e){
 		}
 	})
 })
-	
+	//show all listings button click
 $('.show-all').click(function(){
 	location.reload();
 })
 	
 });
-
-
 
 
 function handleDeleteListingClick(event){
@@ -106,7 +64,7 @@ function renderMultipleListings(listings) {
 		renderListing(listing);
 	});
 }
-
+//render listing to page
 function renderListing(listing) {
 
 var listingHtml=
@@ -194,8 +152,7 @@ var listingHtml=
     </div>
     `;
 
-//<a href="api/houses/${listing._id}/edit" class="btn btn-info edit-listing">Edit Listing</a>
-
+//hide edit box
     $('.listings-container').prepend(listingHtml);
     $('.edit-input').hide();
 
@@ -204,7 +161,7 @@ var listingHtml=
     $(this).closest('.house').find('.edit-input').show();
     $(this).closest('.house').find('.listing-info').hide();
     })
-
+//submit edits
     $('.edit-submit').on('submit', function(e){
     	e.preventDefault();
     	var listingId = $(this).parents('.house').data('house-id')
@@ -234,7 +191,7 @@ var listingHtml=
     	$('.listings-container').prepend(listingToMove);
     	location.reload();
     });
-
+//delete listing click
     $('.delete-listing').click(function(){
     	console.log("ff")
 		$.ajax({
