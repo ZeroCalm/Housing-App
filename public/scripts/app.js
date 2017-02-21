@@ -127,7 +127,7 @@ var listingHtml=
             	  </li>
             	  <li class="list-group-item edit-input">
                   	<div class="form-group ">
-              		 <label class="col-md-4 control-label" for="city">City</label>
+              		 <label class="col-md-4 control-label" for="city">Neighborhood</label>
              		  <div class="col-md-4">
               		     <input id="city" name="city" placeholder='${listing.city}' type="text" class="form-control input-md" />
              		  </div>
@@ -211,19 +211,7 @@ var listingHtml=
     $('.edit-submit').on('submit', function(e){
     	e.preventDefault();
     	var listingId = $(this).parents('.house').data('house-id')
-	    console.log(listingId);
-
-	    //var $listingRow = $('[data-listing-id=' + listingId + ']');
-
-  		// var data = {
-  		//  city: $listingRow.find('#city').val(),
-   	// 	 name: $listingRow.find('#address').val(),
-   	// 	 price: $listingRow.find('#price').val(),
-   	// 	 numRooms: $listingRow.find('#numRooms').val(),
-  		//  url: $listingRow.find('#url').val(),
-  		// };
   		var dataArray= $(this).serializeArray();
-  		console.log(dataArray[2].value);
   		var data= {
   			city: dataArray[0].value,
   			name: dataArray[1].value,
@@ -232,19 +220,22 @@ var listingHtml=
   			url: dataArray[4].value
   		}
    	    $.ajax({
-   	      url: `/api/houses/${listingId}/edit`,
+   	      url: `/api/houses/${listingId}`,
      	  type: 'PUT',
      	  dataType: 'json',
           data: data,
     	  success: function (res) {
-    	  console.log(res);
-      	  console.log(this)
       	  console.log("success")
      	  },
           error: function (err) {
           console.log("error");
           }
         });
+        $(this).closest('.house').find('.edit-input').hide();
+        $(this).closest('.house').find('.listing-info').show()
+    	var listingToMove = $(this).closest('.house');
+    	$('.listings-container').prepend(listingToMove);
+    	location.reload();
     });
 
     $('.delete-listing').click(function(){

@@ -67,21 +67,35 @@ function edit(req, res) {
 
 // PUT or PATCH /api/houses/:houseId/edit
 function update(req, res) {
-  db.House.findById(req.params.houseId, function(err, house) {
-    house.update({
-      city: req.body.city,
-      price: req.body.price,
-      numRooms: req.body.numRooms,
-      url: req.body.url
-    }, function(err, houseId) {
-      if (err) {
-        res.send(err);
-      } else {
-
-      }
+  db.House.findById(req.params.houseId, function(err, foundListing) {
+    if(err) { console.log('houseController.update error', err); }
+    foundListing.city = req.body.city;
+    foundListing.name = req.body.name;
+    foundListing.price = req.body.price;
+    foundListing.roomNums = req.body.roomNums;
+    foundListing.url = req.body.url;
+    foundListing.save(function(err, savedListing) {
+      if(err) { console.log('saving altered listing failed'); }
+      res.json(savedListing);
     });
   });
 }
+
+//     house.update({
+//       city: req.body.city,
+//       name: req.body.name,
+//       price: req.body.price,
+//       numRooms: req.body.numRooms,
+//       url: req.body.url
+//     }, function(err, houseId) {
+//       if (err) {
+//         res.send(err);
+//       } else {
+
+//       }
+//     });
+//   });
+// }
 
 module.exports = {
   index: index,
