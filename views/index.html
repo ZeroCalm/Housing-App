@@ -16,6 +16,7 @@
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
+  
   <body>
 
     <!-- Header -->
@@ -27,80 +28,77 @@
       </div>
     </div>
 
-    <!-- New Listing box -->
+  
     <section id='listing-forms' class="container">
 
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <!-- Search by neigborhood form -->
+            <form class="search-cities form-horizontal">
+                <legend>Browse listings by neighborhood</legend>
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="city">Listings in:</label>
+                   <div class="col-md-4">
+                      <input id="name" name="city" type="text" placeholder="San francisco" class="form-control input-md" /><br>
+                      <button id="singlebutton" name="singlebutton" class="btn btn-primary">Go</button>
+                   </div>
+                </div>
+            </form>
+              <hr>
+              <!-- Create new listing form -->
+            <form class="new-listing form-horizontal">
+              <legend>Add new listing</legend>
+              <!-- Neighborhood -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="city">Neighborhood</label>
+                <div class="col-md-4">
+                  <input id="city" name="city" type="text" placeholder="San Francisco" class="form-control input-md" />
+                </div>
+              </div>
+              <!-- Address -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="name">House Address</label>
+                <div class="col-md-4">
+                  <input id="name" name="name" type="text" placeholder="12 12th St." class="form-control input-md" />
+                </div>
+              </div>
+              <!-- Price -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="price">Price</label>
+                <div class="col-md-4">
+                  <input id="price" name="price" type="number" placeholder="$100,000" class="form-control input-md" />
+                </div>
+              </div>
+              <!-- Bedrooms -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="rooms">Number of Bedrooms</label>
+                <div class="col-md-4">
+                  <input id="rooms" name="numRooms" type="number" placeholder="3" class="form-control input-md" />
+                </div>
+              </div>
+              <!-- link -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="url">Link</label>
+                <div class="col-md-4">
+                  <input id="url" name="url" type="text" placeholder="http:..." class="form-control input-md" />
+                </div>
+              </div>
 
-      <form class="search-cities form-horizontal">
-        <legend>Browse listings by neighborhood</legend>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="city">Listings in:</label>
-               <div class="col-md-4">
-                  <input id="name" name="city" type="text" placeholder="San francisco" class="form-control input-md" /><br>
-                  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Go</button>
-               </div>
-           </div>
-      </form>
+              <!-- submit -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton">Save Listing</label>
+                <div class="col-md-4">
+                  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </form>
             <hr>
-          <form class="new-listing form-horizontal">
 
-            <legend>Add new listing</legend>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="city">Neighborhood</label>
-              <div class="col-md-4">
-                <input id="city" name="city" type="text" placeholder="San Francisco" class="form-control input-md" />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="name">House Address</label>
-              <div class="col-md-4">
-                <input id="name" name="name" type="text" placeholder="12 12th St." class="form-control input-md" />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="price">Price</label>
-              <div class="col-md-4">
-                <input id="price" name="price" type="number" placeholder="$100,000" class="form-control input-md" />
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="rooms">Number of Bedrooms</label>
-              <div class="col-md-4">
-                <input id="rooms" name="numRooms" type="number" placeholder="3" class="form-control input-md" />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="url">Link</label>
-              <div class="col-md-4">
-                <input id="url" name="url" type="text" placeholder="http:..." class="form-control input-md" />
-              </div>
-            </div>
-
-            <!-- submit -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="singlebutton">Save Listing</label>
-              <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-          </form>
-          <hr>
-
-        </div> <!-- col -->
-      </div> <!-- row -->
-   <div class="listings-container" id='list-top'></div>
-    </section>
-
-    <!-- render listings -->
-   
-
+          </div> <!-- col -->
+        </div> <!-- row -->
+      <div class="listings-container" id='list-top'>
+           <!-- render listings -->
+      </div>
+    </section>   
   </body>
 </html>
