@@ -84,27 +84,23 @@ $('#edit-house').on('submit', function(e) {
 
 $('.search-cities').on('submit', function(e){
 	e.preventDefault();
-	var formData = this.val;
-	console.log(formData);
-	$.ajax({
-   	  method: 'GET',
-      url: '/api/houses',
-      success: renderByCity
-  });
-	function renderByCity(listings){
-	//listings.forEach(function(listing){
-		console.log("happy")
-
-		listings.forEach(function(listing){
-			console.log(formData)
-			console.log(listing.city)
-			if(listing.city===formData){
-				renderListing(listing)
-			}
+	var data= $(this).serializeArray()
+	var cityName= data[0].value;
+	var listings = $('.house');
+	
+	var cityData= $('.city-input');
+	cityData.each(function(index, value){
+		if($(this).text()!==cityName){
+			$(this).closest('.house').empty();
+		}
 		})
-	}
-
-})
+		
+	
+	
+	})
+	
+	
+	
 
 
 
@@ -151,7 +147,7 @@ var listingHtml=
               <div class="col-md-12 col-xs-12">
                 <ul class="list-group">
                   <li class="list-group-item">
-                    <h4 class="inline-header">${listing.city}</h4>
+                    <h4 class="inline-header city-input">${listing.city}</h4>
                   </li>
                   <li class="list-group-item">
                     <h4 class="inline-header">${listing.name}</h4>
