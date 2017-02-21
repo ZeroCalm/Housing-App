@@ -120,7 +120,7 @@ var listingHtml=
           <!-- begin house internal row -->
             <div class="row">
               <div class="col-md-12 col-xs-12">
-              <form class="new-listing form-horizontal">
+              <form class="edit-submit form-horizontal">
                 <ul class="list-group">
                   <li class="list-group-item listing-info">
                     <h4 class="inline-header city-input">${listing.city}</h4>
@@ -177,7 +177,7 @@ var listingHtml=
               		  <label class="col-md-4 control-label" for="url">Link</label>
              		  <div class="col-md-4">
               		     <input id="url" placeholder='${listing.url}' name="url" type="text" class="form-control input-md" /><br>
-              		     <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+              		     <button id="singlebutton" class="btn btn-primary submit-changes">Submit</button>
              		  </div>
             	    </div>
                   </li>
@@ -202,28 +202,50 @@ var listingHtml=
     $('.listings-container').prepend(listingHtml);
     $('.edit-input').hide();
 
-    $('.edit-listing').click(function(e) {
+    $('.edit-listing').click(function showEditFields(e) {
     e.preventDefault();
-    console.log("why")
     $(this).closest('.house').find('.edit-input').show();
     $(this).closest('.house').find('.listing-info').hide();
-    console.log('Submitted!!!!');
-    // $.ajax({
-    //   url: '/api/houses/:id/edit',
-    //   type: 'PUT',
-    //   dataType: 'json',
-    //   data: $(this).serialize(),
-    //   success: function (res) {
-    //     console.log(res);
-    //     console.log(this)
-    //   },
-    //   error: function (err) {
-    //     console.log();
-    //   }
-    // });
+    })
 
+    $('.edit-submit').on('submit', function(e){
+    	e.preventDefault();
+    	var listingId = $(this).parents('.house').data('house-id')
+	    console.log(listingId);
 
- });
+	    //var $listingRow = $('[data-listing-id=' + listingId + ']');
+
+  		// var data = {
+  		//  city: $listingRow.find('#city').val(),
+   	// 	 name: $listingRow.find('#address').val(),
+   	// 	 price: $listingRow.find('#price').val(),
+   	// 	 numRooms: $listingRow.find('#numRooms').val(),
+  		//  url: $listingRow.find('#url').val(),
+  		// };
+  		var dataArray= $(this).serializeArray();
+  		console.log(dataArray[2].value);
+  		var data= {
+  			city: dataArray[0].value,
+  			name: dataArray[1].value,
+  			price: dataArray[2].value,
+  			numRooms: dataArray[3].value,
+  			url: dataArray[4].value
+  		}
+   	    $.ajax({
+   	      url: `/api/houses/${listingId}/edit`,
+     	  type: 'PUT',
+     	  dataType: 'json',
+          data: data,
+    	  success: function (res) {
+    	  console.log(res);
+      	  console.log(this)
+      	  console.log("success")
+     	  },
+          error: function (err) {
+          console.log("error");
+          }
+        });
+    });
 
     $('.delete-listing').click(function(){
     	console.log("ff")
