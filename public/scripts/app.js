@@ -47,13 +47,6 @@ $(document).ready(function() {
 });
 
 
-
-
-var houseId = $('house').find('form').data('house-id');
-
-
-
-
 function handleDeleteListingClick(event){
 	var listingId = $(this).parents('.house').data('house-id');
   console.log('someone wants to delete house id=' + houseId );
@@ -74,7 +67,7 @@ function renderMultipleListings(listings) {
 		renderListing(listing);
 	});
 }
-
+//render listing to page
 function renderListing(listing) {
 
 var listingHtml=
