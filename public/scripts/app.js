@@ -120,16 +120,16 @@ var listingHtml=
           <!-- begin house internal row -->
             <div class="row">
               <div class="col-md-12 col-xs-12">
-              <form class="new-listing form-horizontal">
+              <form class="edit-submit form-horizontal">
                 <ul class="list-group">
                   <li class="list-group-item listing-info">
                     <h4 class="inline-header city-input">${listing.city}</h4>
             	  </li>
             	  <li class="list-group-item edit-input">
                   	<div class="form-group ">
-              		 <label class="col-md-4 control-label" for="city">City</label>
+              		 <label class="col-md-4 control-label" for="city">Neighborhood</label>
              		  <div class="col-md-4">
-              		     <input id="city" name="city" placeholder='${listing.city}' type="text" class="form-control input-md" />
+              		     <input id="city" name="city" value='${listing.city}' type="text" class="form-control input-md" />
              		  </div>
             	  </div>
             	  </li>
@@ -140,7 +140,7 @@ var listingHtml=
                   	<div class="form-group">
               		  <label class="col-md-4 control-label" for="address">Address</label>
              		  <div class="col-md-4">
-              		     <input id="address" placeholder= '${listing.name}'' name="name" type="text" class="form-control input-md" />
+              		     <input id="address" value= '${listing.name}'' name="name" type="text" class="form-control input-md" />
              		  </div>
             	    </div>
             	  </li>
@@ -152,7 +152,7 @@ var listingHtml=
 				  	<div class="form-group">
               			   <label class="col-md-4 control-label" for="price">Price</label>
              			   <div class="col-md-4">
-              			      <input id="price" placeholder= '${listing.price}' name="price" type="text" class="form-control input-md" />
+              			      <input id="price" value= '${listing.price}' name="price" type="text" class="form-control input-md" />
              			   </div>
             	  	   </div>
                   </li>
@@ -164,7 +164,7 @@ var listingHtml=
                      <div class="form-group">
               		     <label class="col-md-4 control-label" for="numRooms">Number of Rooms</label>
              		     <div class="col-md-4">
-              		        <input id="numRooms" placeholder='${listing.numRooms}' name="numRooms" type="text" class="form-control input-md" />
+              		        <input id="numRooms" value='${listing.numRooms}' name="numRooms" type="text" class="form-control input-md" />
              		     </div>
             	     </div>
             	  </li>
@@ -176,8 +176,8 @@ var listingHtml=
                   	 <div class="form-group">
               		  <label class="col-md-4 control-label" for="url">Link</label>
              		  <div class="col-md-4">
-              		     <input id="url" placeholder='${listing.url}' name="url" type="text" class="form-control input-md" /><br>
-              		     <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+              		     <input id="url" value='${listing.url}' name="url" type="text" class="form-control input-md" /><br>
+              		     <button id="singlebutton" class="btn btn-primary submit-changes">Submit</button>
              		  </div>
             	    </div>
                   </li>
@@ -202,28 +202,41 @@ var listingHtml=
     $('.listings-container').prepend(listingHtml);
     $('.edit-input').hide();
 
-    $('.edit-listing').click(function(e) {
+    $('.edit-listing').click(function showEditFields(e) {
     e.preventDefault();
-    console.log("why")
     $(this).closest('.house').find('.edit-input').show();
     $(this).closest('.house').find('.listing-info').hide();
-    console.log('Submitted!!!!');
-    // $.ajax({
-    //   url: '/api/houses/:id/edit',
-    //   type: 'PUT',
-    //   dataType: 'json',
-    //   data: $(this).serialize(),
-    //   success: function (res) {
-    //     console.log(res);
-    //     console.log(this)
-    //   },
-    //   error: function (err) {
-    //     console.log();
-    //   }
-    // });
+    })
 
-
- });
+    $('.edit-submit').on('submit', function(e){
+    	e.preventDefault();
+    	var listingId = $(this).parents('.house').data('house-id')
+  		var dataArray= $(this).serializeArray();
+  		var data= {
+  			city: dataArray[0].value,
+  			name: dataArray[1].value,
+  			price: dataArray[2].value,
+  			numRooms: dataArray[3].value,
+  			url: dataArray[4].value
+  		}
+   	    $.ajax({
+   	      url: `/api/houses/${listingId}`,
+     	  type: 'PUT',
+     	  dataType: 'json',
+          data: data,
+    	  success: function (res) {
+      	  console.log("success")
+     	  },
+          error: function (err) {
+          console.log("error");
+          }
+        });
+        $(this).closest('.house').find('.edit-input').hide();
+        $(this).closest('.house').find('.listing-info').show()
+    	var listingToMove = $(this).closest('.house');
+    	$('.listings-container').prepend(listingToMove);
+    	location.reload();
+    });
 
     $('.delete-listing').click(function(){
     	console.log("ff")

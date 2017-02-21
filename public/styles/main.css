@@ -3,6 +3,10 @@
 	background-color: red;
 	display: inline;
 }
+img {
+	float:left;
+	height: 110px;
+}
 
 body {
 	background-color: #F4E3C9 !important;
