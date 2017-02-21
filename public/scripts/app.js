@@ -77,14 +77,11 @@ $('.search-cities').on('submit', function(e){
 	})
 })
 	
-	
+$('.show-all').click(function(){
+	location.reload();
+})
 	
 });
-
-
-
-
-var houseId = $('house').find('form').data('house-id');
 
 
 
