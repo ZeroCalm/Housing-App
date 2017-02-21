@@ -1,45 +1,48 @@
 
 $(document).ready(function() {
 
-  $.ajax({
-    method: 'GET',
-    url: '/api/houses',
-    success: renderMultipleListings
-  });
 
-//post new listing
-$('.new-listing').on('submit', function(e){
-	e.preventDefault();
-	var formData = $(this).serialize();
-	console.log('formData', formData);
-    $.post('/api/houses', formData, function(listing) {
-      console.log('listing after POST', listing);
-      renderListing(listing);  //render the server's response
-    });
- console.log("anything");
-    $(this).trigger("reset");
-});
+//Get all listings
+	  $.ajax({
+	    method: 'GET',
+	    url: '/api/houses',
+	    success: renderMultipleListings
+	  });
+
+	//Create new listing
+	$('.new-listing').on('submit', function(e){
+		e.preventDefault();
+		var formData = $(this).serialize();
+		console.log('formData', formData);
+	    $.post('/api/houses', formData, function(listing) {
+	      console.log('listing after POST', listing);
+	      renderListing(listing);  //render the server's response
+	    });
+	    $('body').scrollTo('#list-top');
+	 console.log("anything");
+	    $(this).trigger("reset");
+	});
 
 
-//search by neighborhood
-$('.search-cities').on('submit', function(e){
-	e.preventDefault();
-	var data= $(this).serializeArray()
-	var cityName= data[0].value;
-	var listings = $('.house');
-	
-	var cityData= $('.city-input');
-	cityData.each(function(index, value){
-		$(this).closest('.house').show();
-		if($(this).text()!==cityName){
-			$(this).closest('.house').hide();
-		}
+
+	$('.search-cities').on('submit', function(e){
+		e.preventDefault();
+		var data= $(this).serializeArray()
+		var cityName= data[0].value;
+		var listings = $('.house');
+		
+		var cityData= $('.city-input');
+		cityData.each(function(index, value){
+			$(this).closest('.house').show();
+			if($(this).text()!==cityName){
+				$(this).closest('.house').hide();
+			}
+		})
 	})
-})
-	//show all listings button click
-$('.show-all').click(function(){
-	location.reload();
-})
+		
+	$('.show-all').click(function(){
+		location.reload();
+	})
 	
 });
 
@@ -107,7 +110,7 @@ var listingHtml=
 				  	<div class="form-group">
               			   <label class="col-md-4 control-label" for="price">Price</label>
              			   <div class="col-md-4">
-              			      <input id="price" value= '${listing.price}' name="price" type="text" class="form-control input-md" />
+              			      <input id="price" value= '$${listing.price}' name="price" type="text" class="form-control input-md" />
              			   </div>
             	  	   </div>
                   </li>
@@ -152,16 +155,17 @@ var listingHtml=
     </div>
     `;
 
-//hide edit box
+    //append listing to page
     $('.listings-container').prepend(listingHtml);
+    //hide edit box
     $('.edit-input').hide();
-
+    //show edit box
     $('.edit-listing').click(function showEditFields(e) {
     e.preventDefault();
     $(this).closest('.house').find('.edit-input').show();
     $(this).closest('.house').find('.listing-info').hide();
     })
-//submit edits
+    //submit changes
     $('.edit-submit').on('submit', function(e){
     	e.preventDefault();
     	var listingId = $(this).parents('.house').data('house-id')
@@ -191,7 +195,7 @@ var listingHtml=
     	$('.listings-container').prepend(listingToMove);
     	location.reload();
     });
-//delete listing click
+    //delete listing
     $('.delete-listing').click(function(){
     	console.log("ff")
 		$.ajax({
