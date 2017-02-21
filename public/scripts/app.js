@@ -63,13 +63,15 @@ $('.new-listing').on('submit', function(e){
 $('#edit-house').on('submit', function(e) {
     e.preventDefault();
     console.log('Submitted!!!!');
+    console.log(this)
     $.ajax({
-      url: '/api/houses/${listing._id}/edit',
+      url: '/api/houses/:id/edit',
       type: 'PUT',
       dataType: 'json',
       data: $(this).serialize(),
       success: function (res) {
         console.log(res);
+        console.log(this)
       },
       error: function (err) {
         console.log();
