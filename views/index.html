@@ -37,7 +37,8 @@
         <legend>Browse listings by neighborhood</legend>
             <div class="form-group">
                <div class="col-md-4">
-                  <input id="name" name="city" type="text" placeholder="San francisco" class="form-control input-md" />
+                  <input id="name" name="city" type="text" placeholder="San francisco" class="form-control input-md" /><br>
+                  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Go</button>
                </div>
            </div>
       </form>
@@ -56,7 +57,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="name">House Address</label>
               <div class="col-md-4">
-                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" />
+                <input id="name" name="name" type="text" placeholder="12 12th St." class="form-control input-md" />
               </div>
             </div>
 
@@ -94,7 +95,7 @@
 
         </div> <!-- col -->
       </div> <!-- row -->
-   <div class="listings-container"></div>
+   <div class="listings-container" id='list-top'></div>
     </section>
 
     <!-- render listings -->

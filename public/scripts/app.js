@@ -129,7 +129,7 @@ var listingHtml=
                   	<div class="form-group ">
               		 <label class="col-md-4 control-label" for="city">Neighborhood</label>
              		  <div class="col-md-4">
-              		     <input id="city" name="city" placeholder='${listing.city}' type="text" class="form-control input-md" />
+              		     <input id="city" name="city" value='${listing.city}' type="text" class="form-control input-md" />
              		  </div>
             	  </div>
             	  </li>
@@ -140,7 +140,7 @@ var listingHtml=
                   	<div class="form-group">
               		  <label class="col-md-4 control-label" for="address">Address</label>
              		  <div class="col-md-4">
-              		     <input id="address" placeholder= '${listing.name}'' name="name" type="text" class="form-control input-md" />
+              		     <input id="address" value= '${listing.name}'' name="name" type="text" class="form-control input-md" />
              		  </div>
             	    </div>
             	  </li>
@@ -152,7 +152,7 @@ var listingHtml=
 				  	<div class="form-group">
               			   <label class="col-md-4 control-label" for="price">Price</label>
              			   <div class="col-md-4">
-              			      <input id="price" placeholder= '${listing.price}' name="price" type="text" class="form-control input-md" />
+              			      <input id="price" value= '${listing.price}' name="price" type="text" class="form-control input-md" />
              			   </div>
             	  	   </div>
                   </li>
@@ -164,7 +164,7 @@ var listingHtml=
                      <div class="form-group">
               		     <label class="col-md-4 control-label" for="numRooms">Number of Rooms</label>
              		     <div class="col-md-4">
-              		        <input id="numRooms" placeholder='${listing.numRooms}' name="numRooms" type="text" class="form-control input-md" />
+              		        <input id="numRooms" value='${listing.numRooms}' name="numRooms" type="text" class="form-control input-md" />
              		     </div>
             	     </div>
             	  </li>
@@ -176,7 +176,7 @@ var listingHtml=
                   	 <div class="form-group">
               		  <label class="col-md-4 control-label" for="url">Link</label>
              		  <div class="col-md-4">
-              		     <input id="url" placeholder='${listing.url}' name="url" type="text" class="form-control input-md" /><br>
+              		     <input id="url" value='${listing.url}' name="url" type="text" class="form-control input-md" /><br>
               		     <button id="singlebutton" class="btn btn-primary submit-changes">Submit</button>
              		  </div>
             	    </div>
