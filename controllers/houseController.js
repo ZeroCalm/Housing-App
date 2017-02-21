@@ -46,7 +46,7 @@ function destroy(req, res) {
   });
 }
 
-
+//UPDATE /api/houses/:houseId
 function edit(req, res) {
   db.House.findById(req.params.houseId, function(err, house) {
     if (err) {
@@ -81,21 +81,6 @@ function update(req, res) {
   });
 }
 
-//     house.update({
-//       city: req.body.city,
-//       name: req.body.name,
-//       price: req.body.price,
-//       numRooms: req.body.numRooms,
-//       url: req.body.url
-//     }, function(err, houseId) {
-//       if (err) {
-//         res.send(err);
-//       } else {
-
-//       }
-//     });
-//   });
-// }
 
 module.exports = {
   index: index,
