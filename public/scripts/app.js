@@ -18,6 +18,7 @@ $(document).ready(function() {
 	      console.log('listing after POST', listing);
 	      renderListing(listing);  //render the server's response
 	    });
+	    $('body').scrollTo('#list-top');
 	 console.log("anything");
 	    $(this).trigger("reset");
 	});
@@ -39,7 +40,9 @@ $(document).ready(function() {
 		})
 	})
 		
-	
+	$('.show-all').click(function(){
+		location.reload();
+	})
 	
 });
 
@@ -114,7 +117,7 @@ var listingHtml=
 				  	<div class="form-group">
               			   <label class="col-md-4 control-label" for="price">Price</label>
              			   <div class="col-md-4">
-              			      <input id="price" value= '${listing.price}' name="price" type="text" class="form-control input-md" />
+              			      <input id="price" value= '$${listing.price}' name="price" type="text" class="form-control input-md" />
              			   </div>
             	  	   </div>
                   </li>
