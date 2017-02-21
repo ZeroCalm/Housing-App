@@ -54,6 +54,7 @@ function edit(req, res) {
     } else {
       // res.json(house);
       res.render('edit', {
+        name: house.name,
         city: house.city,
         price: house.price,
         numRooms: house.numRooms,
